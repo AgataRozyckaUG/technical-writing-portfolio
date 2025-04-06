@@ -1,0 +1,130 @@
+# User Guide: Running To-Do App with Docker
+
+---
+
+## 🛠️ Introduction
+This guide explains how to containerize and run the Node.js To-Do application using Docker.
+
+You will learn how to:
+- Build a Docker image for the app
+- Run the app inside a Docker container
+- Connect it to a MongoDB database (also running in Docker)
+
+---
+
+## 🔍 Prerequisites
+- [Docker](https://docs.docker.com/get-docker/) installed
+- [Docker Compose](https://docs.docker.com/compose/) installed
+- Access to a terminal (Command Prompt, Bash, PowerShell)
+
+---
+
+## 🔧 Step-by-Step Guide
+
+### 1. Create a `Dockerfile`
+Inside the project root, create a file named `Dockerfile`:
+
+```dockerfile
+# Use an official Node.js runtime as a parent image
+FROM node:18
+
+# Set the working directory
+WORKDIR /app
+
+# Copy package.json and package-lock.json
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the application code
+COPY . .
+
+# Expose the port the app runs on
+EXPOSE 8080
+
+# Define the command to run the app
+CMD [ "node", "server.js" ]
+```
+
+### 2. Create a `docker-compose.yml`
+In the project root, create a `docker-compose.yml` file:
+
+```yaml
+version: '3'
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+
+  app:
+    build: .
+    container_name: todo-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongodb
+    environment:
+      - MONGO_URL=mongodb://mongodb:27017/todo
+```
+
+### 3. Build and Run the Containers
+In your terminal, run:
+
+```bash
+docker-compose up --build
+```
+
+This command will:
+- Build the Node.js app Docker image
+- Start a MongoDB container
+- Start the To-Do app container
+
+---
+
+## 📊 Verifying the Setup
+- Open your browser and visit:
+```
+http://localhost:8080/
+```
+You should see the To-Do web application.
+
+- Verify MongoDB is running by connecting with a MongoDB client to `localhost:27017`.
+
+---
+
+## ❓ Troubleshooting
+
+- **Error: port already in use**
+  - Make sure no other services are running on ports 27017 or 8080.
+
+- **Container build failure**
+  - Check that your `Dockerfile` and `docker-compose.yml` files are properly indented and error-free.
+
+---
+
+## 🌐 Useful Commands
+
+**Stop the containers:**
+```bash
+docker-compose down
+```
+
+**Rebuild after code changes:**
+```bash
+docker-compose up --build
+```
+
+**View running containers:**
+```bash
+docker ps
+```
+
+---
+
+## 📅 Last Updated
+April 2025
+
+---
