@@ -1,0 +1,65 @@
+# Quick Start Guide
+
+# 📝 Cloning and Running a Node.js To-Do App
+
+This guide explains how to clone a simple To-Do application built with Node.js and MongoDB, install its dependencies, and run it locally.
+
+---
+
+## 🔍 Prerequisites
+- [Git](https://git-scm.com/) installed
+- [Node.js and npm](https://nodejs.org/) installed
+- [MongoDB](https://www.mongodb.com/) installed and running locally
+- Access to a terminal (Command Prompt, Bash, PowerShell)
+
+---
+
+## 🔧 Installation Steps
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/scotch-io/node-todo.git
+cd node-todo
+```
+
+### 2. Install Dependencies
+```bash
+npm install
+```
+
+### 3. Start MongoDB
+Make sure your MongoDB server is running locally:
+```bash
+mongod
+```
+*(or use MongoDB Atlas if you prefer a cloud database)*
+
+### 4. Run the Application
+```bash
+node server.js
+```
+
+---
+
+## 📊 Verifying the Application
+- Open your browser and go to `http://localhost:8080/`.
+- You should see a simple To-Do list web application.
+
+---
+
+## ❓ Troubleshooting
+
+- **MongoDB connection error:**
+  Ensure MongoDB is installed and running on your local machine.
+
+- **Port conflict:**
+  Make sure no other application is using port `8080`.
+
+---
+
+## 🌟 What's Next?
+
+- Explore the project’s `server.js` file to see how Express.js handles routes.
+- Customize the To-Do list app to add more features!
+
+---
