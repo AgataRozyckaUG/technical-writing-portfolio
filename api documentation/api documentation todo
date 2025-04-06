@@ -1,0 +1,119 @@
+# API Documentation: To-Do Application
+
+---
+
+## 🔖 Base URL
+```
+http://localhost:8080/api
+```
+
+---
+
+## 🔐 Authentication
+No authentication is required.
+
+---
+
+## 🔢 Endpoints
+
+### 1. Get All To-Do Items
+
+**Request:**
+```http
+GET /todos
+```
+
+**Response:**
+```json
+[
+  {
+    "_id": "615c0b2f1c4a2e0015b8b456",
+    "text": "Buy groceries"
+  },
+  {
+    "_id": "615c0b3f1c4a2e0015b8b457",
+    "text": "Walk the dog"
+  }
+]
+```
+
+**Description:**
+Returns a list of all to-do items.
+
+---
+
+### 2. Create a New To-Do Item
+
+**Request:**
+```http
+POST /todos
+Content-Type: application/json
+```
+
+**Request Body:**
+```json
+{
+  "text": "Learn Node.js"
+}
+```
+
+**Response:**
+```json
+{
+  "_id": "615c0b5a1c4a2e0015b8b458",
+  "text": "Learn Node.js"
+}
+```
+
+**Description:**
+Creates a new to-do item with the provided text.
+
+---
+
+### 3. Delete a To-Do Item
+
+**Request:**
+```http
+DELETE /todos/:id
+```
+
+**Example:**
+```http
+DELETE /todos/615c0b5a1c4a2e0015b8b458
+```
+
+**Response:**
+```json
+{
+  "message": "To-Do item deleted successfully."
+}
+```
+
+**Description:**
+Deletes the to-do item with the specified ID.
+
+---
+
+## 🌐 Example cURL Commands
+
+**Get all To-Dos:**
+```bash
+curl http://localhost:8080/api/todos
+```
+
+**Create a new To-Do:**
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"text": "Learn Node.js"}' http://localhost:8080/api/todos
+```
+
+**Delete a To-Do:**
+```bash
+curl -X DELETE http://localhost:8080/api/todos/{id}
+```
+
+---
+
+## 📅 Last Updated
+April 2025
+
+---
