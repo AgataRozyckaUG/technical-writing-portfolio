@@ -3,7 +3,7 @@ Welcome to my portfolio showcasing examples of my technical writing work, includ
 
 ## 📂 Contents
 
-- [Quick Start: Running a Node.js To-Do App](/quick-starts/To do quickstart.txt)
+- [Quick Start Guide: Cloning and Running a Node.js To-Do App](./Quick_Start_Todo_App.md)
 - [User Guide: Setting Up a Docker Environment](./user-guides/User_Guide_Docker_Setup.md)
 - [API Documentation: Sample REST API](./api-documentation/API_Documentation_Sample.md)
 
